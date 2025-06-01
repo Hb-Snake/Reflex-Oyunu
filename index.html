@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Refleks Testi Oyunu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    #oyunAlanı {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #kutu {
+  position: absolute;
+  width: 80px;
+  height: 110px;
+  background-color: red;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50% 50% 60% 60%;
+  display: none;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#kutu::after {
+  content: "";
+  position: absolute;
+  bottom: -90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100px;
+  background-color: #666;
+}
+
+    #bilgi {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+    }
+
+    #skorTablosu ul {
+    list-style-position: inside;
+    padding-left: 0;
+    text-align: left;
+    display: inline-block;
+    }
+
+    #skorTablosu ul,
+    #skorTablosu ol {
+    list-style-position: inside;
+    padding-left: 0;
+    text-align: left;
+    display: inline-block;
+    }
+
+  </style>
+</head>
+<body style=
+    "background-image: url('gpt.jpg');
+    background-size: cover;
+    background-position: center center;
+    min-height: 97vh;
+    text-align: center;
+    ">
+    <div id="oyunModuSeçimi">
+      <h1><big>Oyun Modu Seç</big></h1>
+      <select id="oyunModu">
+        <option value="oyunModu1">Normal Oyun Modu</option>
+        <option value="oyunModu2">Zamana Karşı Oyun Modu</option>
+        <option value="oyunModu3">Serbest Oyun Modu</option>
+      </select>
+      <button id="modSeçildi" onclick="modSeçildi()">Mod Seç</button>
+    </div>
+    <div id="temaSeçimi" style="display: none;">
+      <H1><big>Tema Seç</big></H1>
+      <select id="tema">
+        <option value="gündüz">Gündüz</option>
+        <option value="gece">Gece</option>
+        <option value="uzay">Uzay</option>
+        <option value="ay">Ay</option>
+      </select>
+    </div>
+    <div id="zorlukSeçimi" style="display: none;">
+        <H1><big>Zorluk Seç</big></H1>
+        <select id="zorluk">
+            <option value="kolay">Kolay</option>
+            <option value="orta">Orta</option>
+            <option value="zor">Zor</option>
+        </select>
+        <h1>Hazır Olduğunda Başla</h1>
+        <button onclick="oyunBaşlat()" id="başla" style="text-align: center;">Başla</button>
+    </div>
+  <div id="oyunAlanı" style="
+  object-fit: contain;
+  background-image: url('gökyüzü.jpg'); 
+  display: none; background-size: cover; 
+  background-position: center center; 
+  background-repeat: no-repeat; 
+  text-align: center; 
+  margin: 0;
+  background-attachment: fixed;
+  ">
+    <div id="bilgi" style="text-align: center;">Hazır mısın? Hazırsan Başla!</div>
+    <br>
+    <p id="hak">Kalan Hakkın: 10</p>
+    <br>
+    <button onclick="oyunBaşlat()" id="başla1" style="text-align: center;">Başla</button>
+    <button onclick="oyunBitir()" id="oyunBitir" style="text-align: center;">Oyun Bitir</button>
+    <button onclick="skorGöster()" id="skorGöster">Skor Göster</button>
+    <button id="başaDön1" onclick="başaDön()">Başa Dön</button>
+    <button id="geriDön1" onclick="geriDön()">Oyun Modu Seçimine Geri Dön</button>
+    <div id="kutu"></div>
+    <div id="skorTablosu" style="display: none;">
+    <p>Henüz skor yok.</p>
+    </div>
+    <div id="istatistik1" style="display: none;"></div>
+    <div id="skorTabloMod1" style="display: none; text-align: center;"></div>
+    <button id="skorSil" onclick="skorSil()" style="display: none;">Skorları Sil</button>
+  </div>
+
+  <div id="oyunSonu" style="display: none;">
+  <h1>Oyun Bitti</h1>
+  <button onclick="tekrarBaşlat()" id="tekrar" style="display: none;">Tekrar Başla</button>
+  <button id="başaDön" onclick="başaDön()">Zorluk Seçimine Geri Dön</button>
+  <button id="geriDön" onclick="geriDön()">Oyun Modu Seçimine Geri Dön</button>
+  <p id="skorlar">Henüz skor yok.</p>
+  </div>
+</div>
+
+<div id="skorTabloMod2" style="display: none;">
+  <p id="patlatılanBalonSayısı"></p>
+</div>
+
+<audio id="patlama" src="bang-43964.mp3"></audio>
+<audio id="bitiş" src="piglevelwin2mp3-14800.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
